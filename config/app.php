@@ -73,6 +73,15 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application Date Format
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    'date_format' => 'd F Y, H:i',
+
+    /*
+    |--------------------------------------------------------------------------
     | Application Locale Configuration
     |--------------------------------------------------------------------------
     |
@@ -172,9 +181,11 @@ return [
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
+        App\Providers\LocalServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\HorizonServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
     ],

@@ -17,3 +17,7 @@ yarn-error.log
 
 **/error_log
 **/.DS_Store
+
+/.phpstorm.meta.php
+/_ide_helper.php
+/_ide_helper_models.php
