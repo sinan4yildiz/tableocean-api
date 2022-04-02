@@ -45,18 +45,26 @@ class RouteServiceProvider extends ServiceProvider
                 /*
                  * Admin route group
                  * */
-                Route::prefix('admin')->group(base_path('routes/api/Admin.php'));
+                Route::prefix('admin')->group(base_path('routes/api/admin.php'));
 
                 /*
                  * Clients route group
                  * */
-                Route::prefix('client')->group(base_path('routes/api/Client.php'));
+                Route::prefix('client')->group(base_path('routes/api/client.php'));
 
                 /*
                  * Guest route group
                  * */
-                Route::prefix('guest')->group(base_path('routes/api/Guest.php'));
+                Route::prefix('guest')->group(base_path('routes/api/guest.php'));
             });
+
+
+            /*
+             * Test route group
+             * */
+            if ($this->app->isLocal()) {
+                Route::prefix('test')->group(base_path('routes/test.php'));
+            }
         });
     }
 

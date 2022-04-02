@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Client;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -25,6 +26,24 @@ class ClientFactory extends Factory
             'email_verified_at' => now(),
             'password'          => Hash::make('46ad13da'),
         ];
+    }
+
+    /**
+     * Configure the model factory.
+     *
+     * @return $this
+     */
+    public function configure()
+    {
+        $this->create([
+            'firstname'         => 'Client',
+            'lastname'          => 'Demo',
+            'email'             => 'client@tableocean.com',
+            'email_verified_at' => now(),
+            'password'          => Hash::make('46ad13da'),
+        ]);
+
+        return $this;
     }
 
     /**

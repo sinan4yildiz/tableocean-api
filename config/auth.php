@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'client',
+        'guard'     => 'client',
         'passwords' => 'clients',
     ],
 
@@ -37,17 +37,17 @@ return [
 
     'guards' => [
         'admin' => [
-            'driver' => 'session',
+            'driver'   => 'session',
             'provider' => 'admins',
         ],
 
         'client' => [
-            'driver' => 'session',
+            'driver'   => 'session',
             'provider' => 'clients',
         ],
 
         'guest' => [
-            'driver' => 'session',
+            'driver'   => 'session',
             'provider' => 'guests',
         ],
     ],
@@ -72,17 +72,17 @@ return [
     'providers' => [
         'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Admin::class,
+            'model'  => App\Models\Admin::class,
         ],
 
         'clients' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Client::class,
+            'model'  => App\Models\Client::class,
         ],
 
         'guests' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Guest::class,
+            'model'  => App\Models\Guest::class,
         ],
     ],
 
@@ -104,15 +104,15 @@ return [
     'passwords' => [
         'clients' => [
             'provider' => 'clients',
-            'table' => 'password_resets',
-            'expire' => 60,
+            'table'    => 'password_resets',
+            'expire'   => 60,
             'throttle' => 60,
         ],
 
         'guests' => [
             'provider' => 'guests',
-            'table' => 'password_resets',
-            'expire' => 60,
+            'table'    => 'password_resets',
+            'expire'   => 60,
             'throttle' => 60,
         ],
     ],

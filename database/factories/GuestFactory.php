@@ -28,6 +28,24 @@ class GuestFactory extends Factory
     }
 
     /**
+     * Configure the model factory.
+     *
+     * @return $this
+     */
+    public function configure()
+    {
+        $this->create([
+            'firstname'         => 'Guest',
+            'lastname'          => 'Demo',
+            'email'             => 'guest@tableocean.com',
+            'email_verified_at' => now(),
+            'password'          => Hash::make('46ad13da'),
+        ]);
+
+        return $this;
+    }
+
+    /**
      * Indicate that the model's email address should be unverified.
      *
      * @return static

@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Client\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Auth\LoginRequest;
+use App\Http\Requests\Client\Auth\LoginRequest;
 use App\Http\Resources\Client\Auth\LoginResource;
 use App\Models\Client;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
-class LoginController extends Controller
+class AuthController extends Controller
 {
     /**
      * @throws ValidationException
      */
-    public function index(LoginRequest $request): LoginResource
+    public function login(LoginRequest $request): LoginResource
     {
         /*
          * Login attempt
@@ -41,6 +41,12 @@ class LoginController extends Controller
         /*
          * JSON response
          * */
-        return new LoginResource($client);
+        return LoginResource::make($client);
+    }
+
+
+    public function logout(): void
+    {
+        Auth::user()->currentAccessToken()->delete();
     }
 }

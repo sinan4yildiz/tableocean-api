@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-use App\Casts\DateCast;
+use App\Traits\CustomDateAttributes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 class Client extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes, CustomDateAttributes;
 
     /**
      * The attributes that are mass assignable.
@@ -39,9 +40,5 @@ class Client extends Authenticatable
      *
      * @var array<string, string>
      */
-    protected $casts = [
-        'email_verified_at' => DateCast::class,
-        'created_at'        => DateCast::class,
-        'updated_at'        => DateCast::class,
-    ];
+    protected $casts = [];
 }

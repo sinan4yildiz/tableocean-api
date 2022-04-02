@@ -14,7 +14,17 @@ class LocalServiceProvider extends ServiceProvider
     public function register()
     {
         if ($this->app->isLocal()) {
+            /*
+             * IDE Helper
+             * */
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+
+
+            /*
+             * Telescope
+             * */
+            $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
+            $this->app->register(TelescopeServiceProvider::class);
         }
     }
 
