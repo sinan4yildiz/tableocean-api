@@ -2,10 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Models\Client;
+use App\Models\Plan;
+use App\Models\Restaurant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 /**
  * @extends Factory
@@ -20,6 +20,8 @@ class ClientFactory extends Factory
     public function definition(): array
     {
         return [
+            'restaurant_id'     => Restaurant::inRandomOrder()->first()->id,
+            'plan_id'           => Plan::inRandomOrder()->first()->id,
             'firstname'         => $this->faker->firstName(),
             'lastname'          => $this->faker->lastName(),
             'email'             => $this->faker->unique()->safeEmail(),
@@ -36,6 +38,8 @@ class ClientFactory extends Factory
     public function configure()
     {
         $this->create([
+            'restaurant_id'     => 1,
+            'plan_id'           => 1,
             'firstname'         => 'Client',
             'lastname'          => 'Demo',
             'email'             => 'client@tableocean.com',

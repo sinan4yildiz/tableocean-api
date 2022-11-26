@@ -4,8 +4,10 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
+
+    static string $table = 'admins';
+
     /**
      * Run the migrations.
      *
@@ -13,12 +15,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('guests', function (Blueprint $table) {
+        Schema::create(static::$table, function (Blueprint $table) {
             $table->id();
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->timestamps();
             $table->softDeletes();
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('guests');
+        Schema::dropIfExists(static::$table);
     }
 };

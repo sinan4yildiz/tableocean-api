@@ -5,6 +5,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
+
+    static string $table = 'password_resets';
+
     /**
      * Run the migrations.
      *
@@ -12,14 +15,10 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('admins', function (Blueprint $table) {
-            $table->id();
-            $table->string('firstname');
-            $table->string('lastname');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->timestamps();
-            $table->softDeletes();
+        Schema::create(static::$table, function (Blueprint $table) {
+            $table->string('email')->index();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
         });
     }
 
@@ -30,6 +29,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists(static::$table);
     }
 };
